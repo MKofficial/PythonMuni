@@ -10,28 +10,31 @@ from random import randint
 class task1:
 
     @staticmethod
-    def print_numbers(how_many: int) -> None:
-        for i in range(how_many + 1):
-            print(i)
+    def numbers(how_many: int) -> list:
+        assert how_many >= 0
+        return [i for i in range(how_many + 1)]
 
     @staticmethod
-    def print_even_numbers(upper_bound: int) -> None:
-        for i in range(upper_bound + 1):
-            if i % 2 == 0:
-                print(i)
+    def even_numbers(upper_bound: int) -> list:
+        assert upper_bound > 0
+        return [i for i in range(upper_bound + 1) if i % 2 == 0]
 
     @staticmethod
-    def print_power(how_many: int, base: int) -> None:
-        for i in range(how_many + 1):
-            print(i ** base)
+    def power(how_many: int, base: int) -> list:
+        assert how_many >= 0 and base > 0
+        return [i ** base for i in range(how_many + 1)]
 
     @staticmethod
-    def print_fibonacci(how_many: int) -> None:
+    def fibonacci(how_many: int) -> list:
+        assert how_many > 0
+
         count = 0
         first = 0
         second = 1
+
+        sequence = []
         while count < how_many:
-            print(first)
+            sequence.append(first)
 
             next_element = first + second
             first = second
@@ -39,41 +42,23 @@ class task1:
 
             count += 1
 
+        return sequence
+
     @staticmethod
-    def print_factorial(how_many: int) -> None:
+    def factorial(how_many: int) -> int:
+        assert how_many >= 0
+
         summary = 1
 
         for i in range(how_many):
             summary *= i
 
-        print(summary)
+        return summary
 
     @staticmethod
-    def print_test_prime_number(number: int) -> None:
-        flag = True
+    def test_prime_number(number: int) -> bool:
+        assert number > 0
 
-        for i in range(2, number // 2 + 1):
-            if number % i == 0:
-                flag = False
-                break
-
-        print(flag)
-
-    @staticmethod
-    def return_number_divisors(number: int) -> list:
-        return [i for i in range(2, number // 2 + 1) if number % i == 0]
-
-    @staticmethod
-    def print_test_prime_number2(number: int) -> None:
-        flag = True
-
-        if len(task1.return_number_divisors(number)) > 0:
-            flag = False
-
-        print(flag)
-
-    @staticmethod
-    def return_test_prime_number(number: int) -> bool:
         flag = True
 
         for i in range(2, number // 2 + 1):
@@ -84,12 +69,34 @@ class task1:
         return flag
 
     @staticmethod
-    def print_prime_numbers(how_many: int) -> None:
+    def number_divisors(number: int) -> list:
+        assert number >= 0
+
+        return [i for i in range(2, number // 2 + 1) if number % i == 0]
+
+    @staticmethod
+    def test_prime_number2(number: int) -> bool:
+        assert number >= 0
+
+        flag = True
+
+        for i in range(2, number // 2 + 1):
+            if number % i == 0:
+                flag = False
+                break
+
+        return flag
+
+    @staticmethod
+    def prime_numbers(how_many: int) -> list:
+        assert how_many >= 0
+
         number = 3
+        numbers = []
 
         while True:
-            if task1.return_test_prime_number(number):
-                print(number)
+            if task1.test_prime_number(number):
+                numbers.append(number)
                 how_many -= 1
 
             if how_many == 0:
@@ -97,8 +104,12 @@ class task1:
 
             number += 1
 
+        return numbers
+
     @staticmethod
-    def return_digital_sum(number: int) -> int:
+    def digital_sum(number: int) -> int:
+        assert number >= 0
+
         number_str = str(number)
         summary = 0
 
@@ -109,9 +120,10 @@ class task1:
 
     @staticmethod
     def print_randoms(how_many: int) -> None:
+        assert how_many > 0
         max_number = 100
 
-        numbers = [randint(0, max_number) for i in range(how_many)]
+        numbers = [randint(0, max_number) for _ in range(how_many)]
         max_number = max(numbers)
         min_number = min(numbers)
         avg_number = sum(numbers) / len(numbers)
