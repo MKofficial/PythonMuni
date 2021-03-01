@@ -65,7 +65,7 @@ class task1:
     def print_test_prime_number2(number: int) -> None:
         flag = True
 
-        if len(return_number_divisors(number)) > 0:
+        if len(task1.return_number_divisors(number)) > 0:
             flag = False
 
         print(flag)
@@ -86,7 +86,7 @@ class task1:
         number = 3
 
         while True:
-            if return_test_prime_number(number):
+            if task1.return_test_prime_number(number):
                 print(number)
                 how_many -= 1
 
