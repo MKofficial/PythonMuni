@@ -4,6 +4,8 @@ Module Name: task1
 Date: 27/02/2021
 """
 
+from random import randint
+
 
 class task1:
 
@@ -107,4 +109,14 @@ class task1:
 
     @staticmethod
     def print_randoms(how_many: int) -> None:
-        pass
+        max_number = 100
+
+        numbers = [randint(0, max_number) for i in range(how_many)]
+        max_number = max(numbers)
+        min_number = min(numbers)
+        avg_number = sum(numbers) / len(numbers)
+
+        print("Numbers: " + str(numbers))
+        print("Max number: " + str(max_number))
+        print("Min number: " + str(min_number))
+        print("Average number: " + str(avg_number))
