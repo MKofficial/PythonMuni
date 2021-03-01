@@ -1,5 +1,3 @@
-
-
 """
 Author: Matthew Kriz
 Module Name: testPython
